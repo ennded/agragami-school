@@ -180,18 +180,18 @@ button {
 }
 
 .header__inner {
-  max-width: 1300px;
+  max-width: 1480px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 78px;
-  gap: 16px;
+  gap: 10px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   color: var(--ink);
 }
 
@@ -221,10 +221,10 @@ button {
   display: block;
   white-space: nowrap;
   font-family: "Arvo", Rockwell, "Roboto Slab", Georgia, serif;
-  font-size: clamp(17px, 2vw, 28px);
+  font-size: clamp(14px, 1.5vw, 22px);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -253,8 +253,8 @@ button {
   display: flex;
   align-items: center;
   gap: 3px;
-  padding: 28px 6px;
-  font-size: 11px;
+  padding: 28px 4px;
+  font-size: 10px;
   letter-spacing: 0;
   font-weight: 700;
   text-transform: uppercase;
@@ -309,6 +309,7 @@ button {
 
 .menu-btn {
   display: none;
+  flex: none;
   width: 42px;
   height: 38px;
   padding: 9px;
@@ -324,14 +325,14 @@ button {
   background: #fff;
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1280px) {
   .nav__item:hover > .dropdown,
   .nav__item:focus-within > .dropdown {
     display: block;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1279px) {
   .menu-btn {
     display: block;
   }
@@ -373,6 +374,36 @@ button {
 
   .nav__item.is-open > .dropdown {
     display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__inner {
+    gap: 6px;
+  }
+
+  .brand {
+    gap: 4px;
+  }
+
+  .brand__logo {
+    height: 32px;
+  }
+
+  .brand__name {
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+
+  .brand__tag {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .menu-btn {
+    width: 32px;
+    height: 30px;
+    padding: 6px;
   }
 }
 
