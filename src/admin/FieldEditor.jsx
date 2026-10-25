@@ -118,6 +118,10 @@ function FileField({ id, label, help, value, onChange }) {
   }
 
   const isImage = /\.(jpe?g|png|webp)$/i.test(value || "");
+  const remove = () => {
+    if (!window.confirm("Remove this file? This cannot be undone until you save.")) return;
+    onChange("");
+  };
   return (
     <div className="adm-field">
       {label}
@@ -127,6 +131,11 @@ function FileField({ id, label, help, value, onChange }) {
           {busy ? "Uploading..." : "Upload"}
           <input type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" onChange={upload} disabled={busy} hidden />
         </label>
+        {value && (
+          <button type="button" className="adm-btn adm-btn--danger" onClick={remove} disabled={busy}>
+            Remove
+          </button>
+        )}
       </div>
       {isImage && <img className="adm-thumb" src={value} alt="" />}
       {value && !isImage && (
@@ -147,6 +156,7 @@ function ListField({ field, value, onChange }) {
 
   const set = (i, v) => onChange(items.map((it, j) => (j === i ? v : it)));
   const remove = (i) => {
+    if (!window.confirm(`Remove "${titleOf(items[i])}"? This cannot be undone until you save.`)) return;
     onChange(items.filter((_, j) => j !== i));
     setOpen(null);
   };

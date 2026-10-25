@@ -1,4 +1,5 @@
 import Hero from "../components/Hero.jsx";
+import PrincipalMessage from "../components/PrincipalMessage.jsx";
 import Notices from "../components/Notices.jsx";
 import Intro from "../components/Intro.jsx";
 import BasicDetails from "../components/BasicDetails.jsx";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PrincipalMessage />
       <Notices />
       <Intro />
       <BasicDetails />

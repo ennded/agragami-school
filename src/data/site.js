@@ -132,6 +132,20 @@ export const heroSlides = [
   },
 ];
 
+// Shown on the home page, above the Notices band.
+// "photo" is empty until the admin uploads one — the section still shows with
+// just the message until then.
+export const principalMessage = {
+  name: "Principal",
+  designation: "Principal",
+  photo: "",
+  message: [
+    "Welcome to Agragami Convent School. Our aim is to help every child grow not only in academics but also in character, confidence and compassion.",
+    "We look forward to working with you and your child through this journey of learning.",
+  ],
+  link: "/message-from-the-principal",
+};
+
 // "href" is the link or uploaded PDF for each item. The admin panel fills it in.
 export const notices = [
   { label: "Admission Notice Class Nursery 2026-2027", href: "/files/admission-notice-nursery-2026-27.pdf" },

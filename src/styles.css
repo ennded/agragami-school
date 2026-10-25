@@ -587,6 +587,31 @@ button {
   color: #d6d6d6;
 }
 
+/* a slide with an uploaded school photo instead of a chalk drawing */
+.hero__slide--photo {
+  background-size: cover;
+  background-position: center;
+}
+
+.hero__photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.hero__slide-inner--photo {
+  position: relative;
+  justify-content: flex-start;
+}
+
+.hero__slide--photo .hero__text {
+  text-align: left;
+}
+
+.hero__slide--photo .hero__kicker {
+  justify-content: flex-start;
+}
+
 .hero__arrow {
   position: absolute;
   top: 50%;
@@ -830,6 +855,81 @@ button {
   .hero__slide.is-active .hero__cloud-text span,
   .hero__slide.is-active .hero__text {
     animation: none;
+  }
+}
+
+/* ---------- Principal's message ---------- */
+.principal {
+  padding: 50px 0 10px;
+}
+
+.principal__grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.principal__photo-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.principal__photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+}
+
+.principal__photo--placeholder {
+  display: grid;
+  place-items: center;
+  background: var(--grey-band);
+  color: #999;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-style: dashed;
+}
+
+.principal__text .section-title {
+  margin-bottom: 14px;
+}
+
+.principal__message {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.principal__signature {
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.principal__link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--accent-dark);
+  border-bottom: 1px dashed var(--accent-2);
+}
+
+.principal__link:hover {
+  text-decoration: none;
+  border-bottom-style: solid;
+}
+
+@media (max-width: 700px) {
+  .principal__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .principal__text .section-title {
+    text-align: center;
   }
 }
 

@@ -83,7 +83,6 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>{school.copyright}</p>
-          <p>Designed &amp; developed by <strong>Sangam Gautam</strong> · <a href="mailto:sangam7038931474@gmail.com">sangam7038931474@gmail.com</a></p>
         </div>
       </div>
 

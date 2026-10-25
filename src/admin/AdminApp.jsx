@@ -171,7 +171,7 @@ function Editor({ editor, onLoggedOut }) {
     <>
       <div className="adm-editor">
         <FieldEditor
-          field={{ ...editor, label: undefined }}
+          field={{ ...editor, label: undefined, help: undefined }}
           value={draft}
           onChange={(v) => {
             setDraft(v);

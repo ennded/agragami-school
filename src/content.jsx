@@ -16,6 +16,7 @@ export const defaults = {
   school: site.school,
   nav: site.nav,
   heroSlides: site.heroSlides,
+  principalMessage: site.principalMessage,
   notices: site.notices,
   downloads: site.downloads,
   achievementsIntro: site.achievementsIntro,
@@ -43,6 +44,8 @@ export function mergeContent(saved = {}) {
       }
     } else if (key === "school") {
       out.school = { ...defaults.school, ...data };
+    } else if (key === "principalMessage") {
+      out.principalMessage = { ...defaults.principalMessage, ...data };
     } else if (key in defaults && key !== "pages") {
       out[key] = data;
     }

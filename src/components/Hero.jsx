@@ -108,6 +108,38 @@ export default function Hero() {
 
       <div className="hero__slides">
         {heroSlides.map((s, i) => {
+          const text = (
+            <div className="hero__text">
+              {s.kicker && <p className="hero__kicker">{s.kicker}</p>}
+              {i === 0 ? (
+                <h1 className="hero__title">{s.title}</h1>
+              ) : (
+                <h2 className="hero__title">{s.title}</h2>
+              )}
+              <p className="hero__sub">{s.sub}</p>
+              {s.link && (
+                <Link to={s.link} className="hero__more" tabIndex={i === active ? 0 : -1}>
+                  Read more
+                </Link>
+              )}
+            </div>
+          );
+
+          // A slide with a photo shows it full-width instead of the chalk drawing.
+          if (s.image) {
+            return (
+              <div
+                key={i}
+                className={`hero__slide hero__slide--photo ${i === active ? "is-active" : ""}`}
+                style={{ backgroundImage: `url(${s.image})` }}
+                aria-hidden={i !== active}
+              >
+                <div className="hero__photo-overlay" />
+                <div className="container hero__slide-inner hero__slide-inner--photo">{text}</div>
+              </div>
+            );
+          }
+
           const chalk = (
             <div className="hero__chalk">
               <div className={`hero__art hero__art--${s.art}`}>
@@ -126,22 +158,6 @@ export default function Hero() {
                     <span key={t}>{t}</span>
                   ))}
                 </p>
-              )}
-            </div>
-          );
-          const text = (
-            <div className="hero__text">
-              {s.kicker && <p className="hero__kicker">{s.kicker}</p>}
-              {i === 0 ? (
-                <h1 className="hero__title">{s.title}</h1>
-              ) : (
-                <h2 className="hero__title">{s.title}</h2>
-              )}
-              <p className="hero__sub">{s.sub}</p>
-              {s.link && (
-                <Link to={s.link} className="hero__more" tabIndex={i === active ? 0 : -1}>
-                  Read more
-                </Link>
               )}
             </div>
           );
