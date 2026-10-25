@@ -130,6 +130,29 @@ export const heroSlides = [
     sub: "Class Nursery and Class I, 2026-2027.",
     link: "/admission-procedure",
   },
+  // Real school photos. A slide with "image" set shows the photo instead of
+  // a chalk drawing — add more of these any time from the admin panel.
+  {
+    image: "/images/gallery/gallery-5.jpg",
+    kicker: "Our campus",
+    title: "A place built for learning",
+    sub: "Spacious classrooms, play areas and a green, welcoming campus.",
+    link: "/infrastructure",
+  },
+  {
+    image: "/images/gallery/gallery-3.jpg",
+    kicker: "Celebrating our achievers",
+    title: "Proud of every Agragamian",
+    sub: "Medals, certificates and milestones our students have earned.",
+    link: "/gallery",
+  },
+  {
+    image: "/images/gallery/gallery-2.jpg",
+    kicker: "School life",
+    title: "Celebrations, together",
+    sub: "Festivals and events that bring our school community together.",
+    link: "/gallery",
+  },
 ];
 
 // Shown on the home page, above the Notices band.
