@@ -83,6 +83,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>{school.copyright}</p>
+          <p>Designed &amp; developed by Ripen Strategy Pvt. Ltd.</p>
         </div>
       </div>
 
