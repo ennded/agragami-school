@@ -32,11 +32,8 @@ export default function ContentPage() {
     >
       {page.sections.length === 0 ? (
         <div className="todo-box">
-          <strong>Content not added yet.</strong>
-          <p>
-            Add the text for this page in <code>src/data/pages.js</code> under{" "}
-            <code>"{slug}"</code>.
-          </p>
+          <strong>This page is being updated.</strong>
+          <p>Please check back soon, or contact the school office for more information.</p>
         </div>
       ) : (
         page.sections.map((s, i) => <Section key={i} section={s} />)
