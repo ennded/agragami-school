@@ -1,5 +1,14 @@
 import ImageGrid from "./ImageGrid.jsx";
 
+// For headings like "Brahmaputra|Blue House", colors the bold part to match
+// the house color it names (House system page). Headings elsewhere are
+// unaffected since they don't contain these words.
+const HOUSE_COLORS = ["Blue", "Red", "Green", "Yellow"];
+function houseColorClass(text) {
+  const match = HOUSE_COLORS.find((c) => text.includes(c));
+  return match ? `house-color--${match.toLowerCase()}` : "";
+}
+
 // Renders one section from src/data/pages.js.
 export default function Section({ section }) {
   const [light, bold] = (section.heading || "").split("|");
@@ -10,7 +19,7 @@ export default function Section({ section }) {
         <h2 className="section-title">
           {bold ? (
             <>
-              {light} <strong>{bold}</strong>
+              {light} <strong className={houseColorClass(bold)}>{bold}</strong>
             </>
           ) : (
             <strong>{light}</strong>
@@ -20,7 +29,11 @@ export default function Section({ section }) {
 
       {section.sub && <h3 className="block__sub">{section.sub}</h3>}
 
-      {section.image && <img className="block__image" src={section.image} alt="" />}
+      {section.image && (
+        <a href={section.image} target="_blank" rel="noopener noreferrer" className="block__image-link">
+          <img className="block__image" src={section.image} alt="" />
+        </a>
+      )}
 
       {section.text && section.text.map((t, i) => <p key={i}>{t}</p>)}
 
