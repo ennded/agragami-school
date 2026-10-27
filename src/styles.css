@@ -1535,8 +1535,62 @@ button {
 }
 
 .banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   padding-top: 32px;
   padding-bottom: 32px;
+}
+
+.banner__text {
+  min-width: 0;
+}
+
+.banner__photos {
+  display: flex;
+  gap: 14px;
+  flex: none;
+}
+
+.banner__photo {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  background: #fff;
+  border: 6px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.banner__photo--a {
+  transform: rotate(-4deg);
+}
+
+.banner__photo--b {
+  margin-top: 16px;
+  transform: rotate(4deg);
+}
+
+@media (max-width: 700px) {
+  .banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner__photos {
+    align-self: center;
+  }
+
+  .banner__photo {
+    width: 64px;
+    height: 64px;
+    border-width: 4px;
+  }
+
+  .banner__photo--b {
+    margin-top: 10px;
+  }
 }
 
 .banner__crumbs {
