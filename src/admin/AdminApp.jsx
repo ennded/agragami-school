@@ -138,6 +138,13 @@ function Editor({ editor, onLoggedOut }) {
     return () => window.removeEventListener("beforeunload", warn);
   }, [dirty]);
 
+  // the success toast dismisses itself after a few seconds
+  useEffect(() => {
+    if (!status?.ok) return;
+    const id = setTimeout(() => setStatus(null), 3000);
+    return () => clearTimeout(id);
+  }, [status]);
+
   async function run(action, doneText) {
     setBusy(true);
     setStatus(null);
@@ -169,6 +176,15 @@ function Editor({ editor, onLoggedOut }) {
 
   return (
     <>
+      {status?.ok && (
+        <div className="adm-toast" role="status">
+          <svg className="adm-toast__icon" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          {status.text}
+        </div>
+      )}
+
       <div className="adm-editor">
         <FieldEditor
           field={{ ...editor, label: undefined, help: undefined }}
@@ -186,7 +202,7 @@ function Editor({ editor, onLoggedOut }) {
           {busy ? "Saving..." : "Save changes"}
         </button>
         {dirty && <span className="adm-note">You have unsaved changes.</span>}
-        {status && <span className={status.ok ? "adm-ok" : "adm-error"}>{status.text}</span>}
+        {status && !status.ok && <span className="adm-error">{status.text}</span>}
         <span className="adm-spacer" />
         {isChanged &&
           (confirmReset ? (
