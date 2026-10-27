@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import bcrypt from "bcryptjs";
+import { v2 as cloudinary } from "cloudinary";
 import cors from "cors";
 import express from "express";
 import rateLimit from "express-rate-limit";
@@ -24,7 +25,23 @@ const {
   ADMIN_PASSWORD,
   CLIENT_ORIGIN = "",
   PUBLIC_URL = "",
+  CLOUDINARY_CLOUD_NAME = "",
+  CLOUDINARY_API_KEY = "",
+  CLOUDINARY_API_SECRET = "",
 } = process.env;
+
+// Uploaded files go to Cloudinary when it's configured, so they survive
+// redeploys (the host's local disk is wiped on every deploy). Without it,
+// files are kept on local disk — handy for development, but on a host with
+// a wiped disk, uploaded files will disappear the next time the app deploys.
+const useCloudinary = Boolean(CLOUDINARY_CLOUD_NAME && CLOUDINARY_API_KEY && CLOUDINARY_API_SECRET);
+if (useCloudinary) {
+  cloudinary.config({
+    cloud_name: CLOUDINARY_CLOUD_NAME,
+    api_key: CLOUDINARY_API_KEY,
+    api_secret: CLOUDINARY_API_SECRET,
+  });
+}
 
 if (!JWT_SECRET || JWT_SECRET.startsWith("change-me") || JWT_SECRET.length < 16) {
   console.error("Set JWT_SECRET in server/.env to a long random text (16+ characters).");
@@ -155,18 +172,20 @@ async function main() {
   };
 
   const upload = multer({
-    storage: multer.diskStorage({
-      destination: uploadsDir,
-      // a random name, so an uploaded file can never replace another file
-      filename: (req, file, cb) =>
-        cb(null, crypto.randomBytes(12).toString("hex") + ALLOWED[file.mimetype]),
-    }),
+    storage: useCloudinary
+      ? multer.memoryStorage()
+      : multer.diskStorage({
+          destination: uploadsDir,
+          // a random name, so an uploaded file can never replace another file
+          filename: (req, file, cb) =>
+            cb(null, crypto.randomBytes(12).toString("hex") + ALLOWED[file.mimetype]),
+        }),
     limits: { fileSize: 10 * 1024 * 1024 },
     fileFilter: (req, file, cb) => cb(null, Boolean(ALLOWED[file.mimetype])),
   });
 
   app.post("/api/upload", requireAuth, (req, res) => {
-    upload.single("file")(req, res, (err) => {
+    upload.single("file")(req, res, async (err) => {
       if (err) {
         const tooBig = err.code === "LIMIT_FILE_SIZE";
         return res.status(400).json({ error: tooBig ? "The file is larger than 10 MB." : "Upload failed." });
@@ -174,6 +193,24 @@ async function main() {
       if (!req.file) {
         return res.status(400).json({ error: "Only PDF, JPG, PNG and WEBP files are allowed." });
       }
+
+      if (useCloudinary) {
+        try {
+          const isPdf = req.file.mimetype === "application/pdf";
+          const uploaded = await new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream(
+              { resource_type: isPdf ? "raw" : "image", folder: "agragami" },
+              (uploadErr, result) => (uploadErr ? reject(uploadErr) : resolve(result))
+            );
+            stream.end(req.file.buffer);
+          });
+          return res.json({ url: uploaded.secure_url });
+        } catch (uploadErr) {
+          console.error(uploadErr);
+          return res.status(500).json({ error: "Upload failed." });
+        }
+      }
+
       res.json({ url: `${PUBLIC_URL.replace(/\/$/, "")}/uploads/${req.file.filename}` });
     });
   });

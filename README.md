@@ -58,9 +58,12 @@ On the host, set these (see `server/.env.example`): `MONGODB_URI`, `JWT_SECRET`,
 Things the host must have:
 
 - Node.js 18 or newer. Plain shared hosting made for PHP or WordPress usually cannot run this.
-- A disk that keeps files. Uploaded PDFs and photos are saved in `server/uploads/`.
-  On hosts that wipe the disk on every restart, uploads would be lost.
-- Back up the MongoDB database and the `server/uploads/` folder regularly.
+- A disk that keeps files, **or** set `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`
+  and `CLOUDINARY_API_SECRET` (see `server/.env.example`). Without either one,
+  uploaded PDFs and photos are saved in `server/uploads/`, and most app hosts
+  wipe that on every deploy — uploads would disappear the next time you push
+  code. Cloudinary is the simpler fix on those hosts.
+- Back up the MongoDB database (and `server/uploads/`, if you're using that instead of Cloudinary) regularly.
 
 If the website and the server have to live on different addresses, build the
 website with `VITE_API_URL=https://api.example.com npm run build`, and set
