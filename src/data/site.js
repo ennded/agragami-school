@@ -89,6 +89,30 @@ export const nav = [
 //   kicker:    small line above the title (optional)
 //   link:      page that the "Read more" link opens (optional)
 export const heroSlides = [
+  // Real school photos come first, so a visitor sees an actual photo of the
+  // school by default. A slide with "image" set shows the photo instead of
+  // a chalk drawing — add more of these any time from the admin panel.
+  {
+    image: "/images/gallery/gallery-5.jpg",
+    kicker: "Our campus",
+    title: "A place built for learning",
+    sub: "Spacious classrooms, play areas and a green, welcoming campus.",
+    link: "/infrastructure",
+  },
+  {
+    image: "/images/gallery/gallery-3.jpg",
+    kicker: "Celebrating our achievers",
+    title: "Proud of every Agragamian",
+    sub: "Medals, certificates and milestones our students have earned.",
+    link: "/gallery",
+  },
+  {
+    image: "/images/gallery/gallery-2.jpg",
+    kicker: "School life",
+    title: "Celebrations, together",
+    sub: "Festivals and events that bring our school community together.",
+    link: "/gallery",
+  },
   {
     art: "idea",
     artSide: "right",
@@ -129,29 +153,6 @@ export const heroSlides = [
     title: "Admission procedure",
     sub: "Class Nursery and Class I, 2026-2027.",
     link: "/admission-procedure",
-  },
-  // Real school photos. A slide with "image" set shows the photo instead of
-  // a chalk drawing — add more of these any time from the admin panel.
-  {
-    image: "/images/gallery/gallery-5.jpg",
-    kicker: "Our campus",
-    title: "A place built for learning",
-    sub: "Spacious classrooms, play areas and a green, welcoming campus.",
-    link: "/infrastructure",
-  },
-  {
-    image: "/images/gallery/gallery-3.jpg",
-    kicker: "Celebrating our achievers",
-    title: "Proud of every Agragamian",
-    sub: "Medals, certificates and milestones our students have earned.",
-    link: "/gallery",
-  },
-  {
-    image: "/images/gallery/gallery-2.jpg",
-    kicker: "School life",
-    title: "Celebrations, together",
-    sub: "Festivals and events that bring our school community together.",
-    link: "/gallery",
   },
 ];
 
