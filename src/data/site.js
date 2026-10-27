@@ -93,10 +93,10 @@ export const heroSlides = [
   // school by default. A slide with "image" set shows the photo instead of
   // a chalk drawing — add more of these any time from the admin panel.
   {
-    image: "/images/gallery/gallery-5.jpg",
+    image: "/images/gallery/gallery-9.jpg",
     kicker: "Our campus",
-    title: "A place built for learning",
-    sub: "Spacious classrooms, play areas and a green, welcoming campus.",
+    title: "Welcome to Agragami Convent School",
+    sub: "Mhasala, Wardha.",
     link: "/infrastructure",
   },
   {
