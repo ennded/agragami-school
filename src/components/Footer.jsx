@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SocialIcon from "./SocialIcon.jsx";
 import { useContent } from "../content.jsx";
 
 export default function Footer() {
@@ -35,8 +36,16 @@ export default function Footer() {
             {socialLinks && socialLinks.length > 0 && (
               <div className="footer__social">
                 {socialLinks.map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
-                    {s.label}
+                  <a
+                    key={s.label}
+                    className="footer__social-link"
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    title={s.label}
+                  >
+                    <SocialIcon label={s.label} href={s.href} />
                   </a>
                 ))}
               </div>
