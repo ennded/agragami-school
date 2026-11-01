@@ -5,7 +5,7 @@
 export const school = {
   name: "Agragami Convent School",
   place: "Mhasala, Wardha",
-  affiliation: "Affiliated to the State Board",
+  affiliation: "Affiliated to C.B.S.E. Delhi",
   motto: "Live for truth and justice",
   // Save the logo file as public/images/logo.png. Until then the old site URL is used.
   logo: "/images/logo.png",
@@ -89,63 +89,70 @@ export const nav = [
 //   kicker:    small line above the title (optional)
 //   link:      page that the "Read more" link opens (optional)
 export const heroSlides = [
-  // Real school photos only — the hand-drawn chalkboard slides were removed.
-  // A slide with "image" set shows that photo full-width.
+  // Real school photos come first, so a visitor sees an actual photo of the
+  // school by default. A slide with "image" set shows the photo instead of
+  // a chalk drawing — add more of these any time from the admin panel.
   {
-    image: "/images/gallery/whole-school-1.jpg",
+    image: "/images/gallery/gallery-9.jpg",
     kicker: "Our campus",
     title: "Welcome to Agragami Convent School",
     sub: "Mhasala, Wardha.",
     link: "/infrastructure",
   },
   {
-    image: "/images/gallery/mural-walkway-wide.jpg",
-    kicker: "Our values",
-    title: "Truth, justice and growth",
-    sub: "Words that greet our students every day.",
-    link: "/about-agragami",
-  },
-  {
-    image: "/images/gallery/campus-entrance.jpg",
-    kicker: "Our campus",
+    image: "/images/gallery/gallery-3.jpg",
+    kicker: "Celebrating our achievers",
     title: "Proud of every Agragamian",
-    sub: "Our school, decorated and ready to welcome every visitor.",
+    sub: "Medals, certificates and milestones our students have earned.",
     link: "/gallery",
   },
   {
-    image: "/images/gallery/students-assembly.jpg",
+    image: "/images/gallery/gallery-2.jpg",
     kicker: "School life",
-    title: "Together we grow, together we shine",
+    title: "Celebrations, together",
     sub: "Festivals and events that bring our school community together.",
     link: "/gallery",
   },
   {
-    image: "/images/gallery/courtyard-wide.jpg",
-    kicker: "Our campus",
-    title: "Our school courtyard",
-    sub: "Where our students gather every day.",
-    link: "/gallery",
+    art: "idea",
+    artSide: "right",
+    kicker: "Affiliated to C.B.S.E. Delhi",
+    title: "Agragami Convent School",
+    sub: "Mhasala, Wardha",
+    chalkText: ["Live for truth", "and justice."],
   },
   {
-    image: "/images/gallery/campus-wide-2.jpg",
-    kicker: "School life",
-    title: "Our school grounds",
-    sub: "A quiet corner of our campus.",
-    link: "/gallery",
+    art: "medal",
+    artSide: "left",
+    chalkText: ["37 gold, 35 silver,", "36 bronze."],
+    kicker: "48 scholarships and 35 cash prizes",
+    title: "Agragamians' achievements",
+    sub: "Competitive examinations, 2015 to 2018.",
   },
   {
-    image: "/images/gallery/grotto.jpg",
-    kicker: "On campus",
-    title: "A peaceful corner",
-    sub: "The grotto on our school grounds.",
-    link: "/gallery",
+    art: "school",
+    artSide: "right",
+    chalkText: ["Since 2005."],
+    title: "Established in 2005",
+    sub: "Run by the Society of Sisters of St. John, Wardha.",
+    link: "/general-information",
   },
   {
-    image: "/images/gallery/activity-zone.jpg",
-    kicker: "School life",
-    title: "Always something happening",
-    sub: "Our activity zone and school grounds.",
-    link: "/student-activities",
+    art: "book",
+    artSide: "left",
+    chalkText: ["English medium,", "NCERT syllabi."],
+    kicker: "Academic session: April to March",
+    title: "Our curriculum",
+    sub: "NCERT syllabi, as per the instructions of CBSE.",
+    link: "/curriculum",
+  },
+  {
+    art: "cloud",
+    artSide: "right",
+    cloudText: ["Admissions", "2026-2027"],
+    title: "Admission procedure",
+    sub: "Class Nursery and Class I, 2026-2027.",
+    link: "/admission-procedure",
   },
 ];
 
@@ -218,7 +225,7 @@ export const basicDetails = [
   { label: "Affiliation no.", value: "1130217" },
   { label: "School no.", value: "30271" },
   { label: "Medium", value: "English" },
-  { label: "Syllabi", value: "State Board syllabi" },
+  { label: "Syllabi", value: "NCERT (as per the instructions of CBSE)" },
   { label: "Academic session", value: "April to March" },
   { label: "Affiliation period", value: "01.04.2021 to 31.03.2025" },
 ];
