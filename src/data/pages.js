@@ -25,7 +25,7 @@ export const pages = {
       {
         heading: "Basic|details",
         facts: [
-          { label: "Name", value: "Agragami Convent School, C.B.S.E" },
+          { label: "Name", value: "Agragami Convent School, State Board" },
           { label: "Run by", value: "Society of Sisters of St. John, Wardha" },
           { label: "Establishment year", value: "2005" },
           { label: "Affiliation period", value: "01.04.2021 to 31.03.2025" },
@@ -33,7 +33,7 @@ export const pages = {
           { label: "School no.", value: "30271" },
           { label: "Motto", value: "Live for TRUTH and JUSTICE" },
           { label: "Medium", value: "English" },
-          { label: "Syllabi", value: "NCERT (as per the instructions of CBSE)" },
+          { label: "Syllabi", value: "State Board syllabi" },
           { label: "Academic session", value: "April to March" },
           {
             label: "School hours",
@@ -195,7 +195,7 @@ export const pages = {
     sections: [
       {
         heading: "Subjects|offered",
-        text: ["The school follows NCERT syllabi as per the instructions of CBSE. The medium of instruction is English."],
+        text: ["The school follows the State Board syllabi. The medium of instruction is English."],
         list: [
           "English – Classes IX and X",
           "Mathematics – Classes IX and X",
@@ -577,7 +577,7 @@ export const pages = {
       {
         heading: "Capacity building|training",
         text: [
-          "Capacity Building Training of life skills was conducted for the teachers in our school. Along with 33 teachers from CBSE schools, they attended a session by Mrs. Neeru Kupai, the resource person, who spoke on life skills and how they help in education.",
+          "Capacity Building Training of life skills was conducted for the teachers in our school. Along with 33 teachers from State Board schools, they attended a session by Mrs. Neeru Kupai, the resource person, who spoke on life skills and how they help in education.",
         ],
       },
     ],
@@ -588,33 +588,10 @@ export const pages = {
   "sports-and-games": {
     light: "Sports and",
     bold: "games",
-    photos: ["/images/sports/sports-1.jpeg", "/images/sports/sports-3.jpeg"],
     sections: [
       {
         heading: "Sports at Agragami",
         text: ["Agragami Convent School believes in the all-round development of every student. Sports and physical education form an integral part of school life, helping students build fitness, teamwork, discipline, and a competitive spirit alongside academic excellence."],
-      },
-      {
-        heading: "Sports day 2024 — photo gallery",
-        type: "image-grid",
-        images: [
-          "/images/sports/sports-1.jpeg",
-          "/images/sports/sports-2.jpeg",
-          "/images/sports/sports-3.jpeg",
-          "/images/sports/sports-4.jpeg",
-          "/images/sports/sports-5.jpeg",
-          "/images/sports/sports-6.jpeg",
-          "/images/sports/sports-7.jpeg",
-          "/images/sports/sports-8.jpeg",
-          "/images/sports/sports-9.jpeg",
-          "/images/sports/sports-10.jpeg",
-          "/images/sports/sports-11.jpeg",
-          "/images/sports/sports-12.jpeg",
-          "/images/sports/sports-13.jpeg",
-          "/images/sports/sports-14.jpeg",
-          "/images/sports/sports-15.jpeg",
-          "/images/sports/sports-16.jpeg",
-        ],
       },
     ],
   },
@@ -622,27 +599,9 @@ export const pages = {
 
 // Gallery photos. Put files in public/images/gallery/ and set "image".
 // Categories are the same as the old site.
-export const galleryCategories = [
-  "News and Media",
-  "Photos",
-  "Sports And Games",
-  "Students Achievement",
-];
+export const galleryCategories = ["Photos"];
 
-export const galleryItems = [
-  { title: "School building", category: "Photos", image: "/images/gallery/gallery-1.jpg" },
-  { title: "School building exterior", category: "Photos", image: "/images/gallery/gallery-2.jpg" },
-  { title: "School campus", category: "Photos", image: "/images/gallery/gallery-3.jpg" },
-  { title: "Students on campus", category: "Photos", image: "/images/gallery/gallery-4.jpg" },
-  { title: "School activity", category: "Photos", image: "/images/gallery/gallery-5.jpg" },
-  { title: "School event", category: "Photos", image: "/images/gallery/gallery-6.jpg" },
-  { title: "Students at event", category: "Photos", image: "/images/gallery/gallery-8.jpeg" },
-  { title: "Chanda Live-In 2022", category: "News and Media", image: "/images/gallery/gallery-9.jpg" },
-  { title: "Chanda Live-In 2022", category: "News and Media", image: "/images/gallery/gallery-10.jpg" },
-  { title: "School activity 2021", category: "News and Media", image: "/images/gallery/gallery-11.jpg" },
-  { title: "School activity 2021", category: "News and Media", image: "/images/gallery/gallery-12.jpg" },
-  { title: "Students achievement 2022", category: "Students Achievement", image: "/images/gallery/gallery-14.jpg" },
-];
+export const galleryItems = [];
 
 // Finds the menu group a page belongs to, for the breadcrumb and the side menu.
 export function findGroup(path) {
