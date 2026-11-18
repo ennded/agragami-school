@@ -223,6 +223,13 @@ async function main() {
     });
   });
 
+  // TEMPORARY — diagnostic only, to be removed once the Cloudinary mismatch
+  // is resolved. Reports no secrets, only which cloud name is actually
+  // loaded by this running process.
+  app.get("/api/debug/cloudinary", (req, res) => {
+    res.json({ useCloudinary, cloudName: CLOUDINARY_CLOUD_NAME || null });
+  });
+
   app.use("/uploads", express.static(uploadsDir, { maxAge: "30d", index: false }));
 
   // ---------- the website itself ----------
