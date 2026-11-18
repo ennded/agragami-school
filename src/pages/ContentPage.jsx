@@ -1,14 +1,14 @@
 import { Link, useLocation, useParams } from "react-router-dom";
 import PageLayout from "../components/PageLayout.jsx";
 import Section from "../components/Section.jsx";
-import { findGroup } from "../data/pages.js";
+import { findGroup, findPage } from "../data/pages.js";
 import { useContent } from "../content.jsx";
 
 export default function ContentPage() {
   const { pages } = useContent();
   const { slug } = useParams();
   const { pathname } = useLocation();
-  const page = slug ? pages[slug] : null;
+  const page = findPage(pages, slug);
 
   if (!page) {
     return (

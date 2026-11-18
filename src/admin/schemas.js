@@ -54,6 +54,12 @@ const pageFields = [
       },
       { name: "table", label: "Table", type: "table" },
       { name: "links", label: "Files and links", ...linkList("file") },
+      {
+        name: "images",
+        label: "Photo gallery (one photo link per line)",
+        type: "photos",
+        help: "Upload each photo using the Photo field above to get its link, then paste the links here, one per line — this is how the sports day photo gallery is updated.",
+      },
     ],
   },
 ];

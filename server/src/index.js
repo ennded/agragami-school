@@ -199,7 +199,15 @@ async function main() {
           const isPdf = req.file.mimetype === "application/pdf";
           const uploaded = await new Promise((resolve, reject) => {
             const stream = cloudinary.uploader.upload_stream(
-              { resource_type: isPdf ? "raw" : "image", folder: "agragami" },
+              {
+                resource_type: isPdf ? "raw" : "image",
+                folder: "agragami",
+                // Cloudinary only appends a file extension on its own for images.
+                // A PDF ("raw") with no extension in its public ID is served
+                // without one too, so browsers can't tell it's a PDF and just
+                // download it under a random name instead of showing it.
+                ...(isPdf ? { public_id: crypto.randomBytes(12).toString("hex") + ".pdf" } : {}),
+              },
               (uploadErr, result) => (uploadErr ? reject(uploadErr) : resolve(result))
             );
             stream.end(req.file.buffer);

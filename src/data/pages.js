@@ -646,5 +646,17 @@ export const galleryItems = [
 
 // Finds the menu group a page belongs to, for the breadcrumb and the side menu.
 export function findGroup(path) {
-  return nav.find((item) => item.children && item.children.some((c) => c.path === path)) || null;
+  const norm = (p) => (p || "").toLowerCase();
+  return nav.find((item) => item.children && item.children.some((c) => norm(c.path) === norm(path))) || null;
+}
+
+// Looks up a page by slug without caring about letter case, so a link that
+// was typed or pasted with different capitalization (e.g. in the admin
+// panel's navigation editor) still finds its page instead of 404ing.
+// Takes the live (admin-merged) pages object, not just the built-in one.
+export function findPage(allPages, slug) {
+  if (!slug) return null;
+  if (allPages[slug]) return allPages[slug];
+  const key = Object.keys(allPages).find((k) => k.toLowerCase() === slug.toLowerCase());
+  return key ? allPages[key] : null;
 }
